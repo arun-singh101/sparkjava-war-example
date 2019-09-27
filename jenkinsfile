@@ -1,0 +1,20 @@
+def workspace
+node{
+stage ('checkout')
+{
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/kliakos/sparkjava-war-example.git']]])
+    workspace=pwd()
+}
+stage('build the code')
+{
+    build job: 'DevCompile', quietPeriod: 0
+}
+stage('testing code')
+{
+    echo "code testing"
+}
+stage('code review')
+{
+ echo "code review"
+}
+}
