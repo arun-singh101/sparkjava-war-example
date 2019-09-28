@@ -5,16 +5,4 @@ stage ('checkout')
 {
    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/arun-singh101/sparkjava-war-example.git']]])
 }
-stage('build the code')
-{
-    build job: 'DevCompile', quietPeriod: 0
-}
-stage('testing code')
-{
-    echo "code testing"
-}
-stage('code review')
-{
- echo "code review"
-}
 }
